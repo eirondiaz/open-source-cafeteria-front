@@ -1,0 +1,82 @@
+@import "../App.scss";
+
+.app-drawer-container {
+	background-color: white;
+	width: 100%;
+	height: 100%;
+	padding: 20px 6px 0px 6px;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: all 0.3s ease-out;
+	border-right: 1.5px solid #eeeeee;
+}
+
+.app-drawer-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0.3rem;
+	transition: all 0.3s ease-out;
+	// white-space: nowrap;
+}
+
+.app-drawer-icon {
+	padding: 4px;
+	transition: all 0.3s ease-out;
+	color: $accent;
+}
+
+.app-drawer-icon-selected {
+	@extend .app-drawer-icon;
+	color: white;
+}
+
+.logo {
+	width: 80%;
+	height: 80%;
+	@media only screen and (min-width: 1500px) {
+		width: 80%;
+		height: 80%;
+	}
+	@media only screen and (min-width: 2500px) {
+		width: 80%;
+		height: 80%;
+	}
+}
+
+.logo-spin {
+	animation-name: logo-spin_;
+	animation-duration: 500ms;
+	animation-iteration-count: 2000ms;
+	animation-timing-function: linear;
+}
+
+.logo-zoom {
+	animation-name: logo-zoom_;
+	animation-duration: 1000ms;
+	animation-iteration-count: 2000ms;
+	animation-timing-function: linear;
+}
+
+@keyframes logo-spin_ {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes logo-zoom_ {
+	0% {
+		transform: scale(1, 1);
+	}
+	50% {
+		transform: scale(1.2, 1.2);
+	}
+	100% {
+		transform: scale(1, 1);
+	}
+}

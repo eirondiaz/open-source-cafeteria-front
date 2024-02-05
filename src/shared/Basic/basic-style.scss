@@ -1,0 +1,81 @@
+@import "../../App.scss";
+
+.soft-transition {
+	transition: all 0.2s ease-in-out;
+}
+
+@keyframes zoom-in-zoom-out {
+	0% {
+		transform: scale(1, 1);
+	}
+	50% {
+		transform: scale(1.05, 1.05);
+	}
+	100% {
+		transform: scale(1, 1);
+	}
+}
+
+.button-user {
+	background-color: $abiYellow;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	position: absolute;
+	right: 9%;
+	height: 40px;
+	width: 10%;
+	font-size: 10px;
+}
+
+input[type="file"]::file-selector-button {
+	border: 2px solid $abiBlack;
+	padding: 8px;
+	border-radius: $basic-border-radius;
+	background-color: $abiBlack;
+	transition: 1s;
+	color: white;
+	margin-right: 20px;
+}
+
+input[type="file"]::file-selector-button:hover {
+	background-color: $abiBlack;
+	border: 2px solid $abiBlack;
+}
+
+.external-container-logo {
+	position: absolute;
+	bottom: 1%;
+	right: 6%;
+	width: 80px;
+	margin: 0;
+}
+
+.user-register-dividerbar {
+	position: absolute;
+	top: 0;
+	left: 46.5%;
+	width: 100px;
+	clip-path: polygon(32% 0, 68% 0, 100% 100%, 0% 100%);
+	transform: skewX(-1deg);
+	height: 100vh;
+	background-color: $abiYellow;
+	background-size: cover;
+	background-position: center;
+	margin: 0;
+	@media (max-width: 900px) {
+		left: 28%;
+		width: 60px;
+	}
+
+	@media (max-width: 600px) {
+		left: -6%;
+		width: 40px;
+	}
+}
+
+.box-container {
+	margin: 10% 6%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

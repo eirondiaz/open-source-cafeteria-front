@@ -1,0 +1,135 @@
+$typography-primary: 10px;
+$typography-secondary: 12px;
+$typography-third: 14px;
+$typography-fourth: 16px;
+$green-primary: #0ba248;
+$yellow-primary: #f7c544;
+$orange-secondary: #ff6613;
+$red-primary: #eb3b46;
+$blue-state: #4b65ec;
+$grey: #dbdbdb;
+$abiYellow: #f7c544;
+$mustard: #ecac08;
+$abiBlack: #323232;
+$abiGray: #353840;
+$accent: #0b45a2;
+$accentDark: #063683;
+$abiHeaderBg: linear-gradient(110deg, #323232 80%, #353840 20%);
+$basic-border-radius: 6px;
+$lightGrey: #f3f3f3;
+#root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	height: 100%;
+}
+
+.app-header-container {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	height: 64px;
+	z-index: 100;
+}
+
+.screen-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	min-height: 100%;
+	transition: all 0.3s ease-out;
+}
+
+.header-configuration {
+	background-color: $abiBlack !important;
+	// background: linear-gradient(90deg, #D3A238 0%, #DCB22A 31.25%, #F5E003 100%)
+}
+.body-configuration {
+	background-color: $grey;
+}
+.text-primary {
+	font-size: $typography-primary !important ;
+}
+.text-secondary {
+	font-size: $typography-secondary !important;
+}
+.text-third {
+	font-size: $typography-third !important;
+	margin-right: 5px;
+}
+.text-fourth {
+	font-size: $typography-fourth !important;
+}
+.txt-w-600 {
+	font-weight: 600 !important;
+}
+.txt-w-700 {
+	font-weight: 700 !important;
+}
+.txt-c {
+	text-align: center !important;
+}
+
+.title-page {
+	margin: 0;
+	color: #4b65ec;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 22px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #b8b8b8;
+	border-radius: 20px;
+	border: 6px solid transparent;
+	background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #a1a1a1;
+}
+
+div:focus {
+	outline: none;
+}
+
+.handle-wrapper {
+	div {
+		width: 5px !important;
+		right: -1px !important;
+		border-radius: $basic-border-radius;
+	}
+	div:hover {
+		background-color: rgba($accent, 0.5);
+		transition: background-color 0.3s;
+		z-index: 1;
+		animation: blink 1.2s infinite;
+	}
+	div:active {
+		background-color: rgba($accent, 0.85);
+		transition: background-color 0.3s;
+		z-index: 1;
+	}
+}
+
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+// .gVgqzi,
+// .sc-dmsloy {
+// 	max-height: 600px !important;
+// }

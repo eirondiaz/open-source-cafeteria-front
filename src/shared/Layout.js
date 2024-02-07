@@ -4,9 +4,10 @@ import SideDrawer from './SideDrawer'
 import CampusScreen from '../components/campus/CampusScreen'
 import SupplierScreen from '../components/supplier/SupplierScreen'
 import UserTypeScreen from '../components/user-type/UserTypeScreen'
+import CafeteriaScreen from '../components/cafeteria/CafeteriaScreen'
 
 const Layout = () => {
-  const [selectedItem, setSelectedItem] = useState('campus')
+  const [selectedItem, setSelectedItem] = useState('cafeteria')
 
   return (
     <Grid container sx={{ height: '100%' }}>
@@ -37,7 +38,9 @@ const Layout = () => {
             <p>Prueba</p>
             <AdminHeader xs={!isExtendedDrawer ? 11.4 : 10.2} />
           </Grid> */}
-          {selectedItem == 'campus' ? (
+          {selectedItem == 'cafeteria' ? (
+            <CafeteriaScreen />
+          ) : selectedItem == 'campus' ? (
             <CampusScreen />
           ) : selectedItem == 'supplier' ? (
             <SupplierScreen />

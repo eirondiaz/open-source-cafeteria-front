@@ -22,6 +22,13 @@ import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined'
 
 const drawerItems = [
   {
+    label: 'Cafeteria',
+    countKey: 'cafeteria',
+    Icon: GavelIcon,
+    url: '',
+    roles: ['superadmin', 'mazadmin'],
+  },
+  {
     label: 'Campus',
     countKey: 'campus',
     Icon: GavelIcon,

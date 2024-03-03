@@ -5,6 +5,9 @@ import CampusScreen from '../components/campus/CampusScreen'
 import SupplierScreen from '../components/supplier/SupplierScreen'
 import UserTypeScreen from '../components/user-type/UserTypeScreen'
 import CafeteriaScreen from '../components/cafeteria/CafeteriaScreen'
+import BrandScreen from '../components/brand/BrandScreen'
+import ItemScreen from '../components/item/ItemScreen'
+import EmployeeScreen from '../components/employee/EmployeeScreen'
 
 const Layout = () => {
   const [selectedItem, setSelectedItem] = useState('cafeteria')
@@ -44,6 +47,12 @@ const Layout = () => {
             <CampusScreen />
           ) : selectedItem == 'supplier' ? (
             <SupplierScreen />
+          ) : selectedItem == 'brand' ? (
+            <BrandScreen />
+          ) : selectedItem == 'item' ? (
+            <ItemScreen />
+          ) : selectedItem == 'employee' ? (
+            <EmployeeScreen />
           ) : (
             <UserTypeScreen />
           )}

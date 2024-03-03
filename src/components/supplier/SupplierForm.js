@@ -74,7 +74,7 @@ const SupplierForm = ({
   const update = async () => {
     try {
       await axios.put(
-        `https://cafeteria-op-src-api.onrender.com/api/suppliers/${element.id}`,
+        `https://cafeteria-op-src-api.onrender.com/api/suppliers/${newElement.id}`,
         newElement
       )
       setEditData({})

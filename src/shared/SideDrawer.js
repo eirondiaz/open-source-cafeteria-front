@@ -49,6 +49,27 @@ const drawerItems = [
     url: '',
     roles: ['superadmin', 'mazadmin'],
   },
+  {
+    label: 'Marcas',
+    countKey: 'brand',
+    Icon: LocalMallOutlinedIcon,
+    url: '',
+    roles: ['superadmin', 'mazadmin'],
+  },
+  {
+    label: 'Articulos',
+    countKey: 'item',
+    Icon: LocalMallOutlinedIcon,
+    url: '',
+    roles: ['superadmin', 'mazadmin'],
+  },
+  {
+    label: 'Empleados',
+    countKey: 'employee',
+    Icon: LocalMallOutlinedIcon,
+    url: '',
+    roles: ['superadmin', 'mazadmin'],
+  },
 
   // {
   //   label: 'users',

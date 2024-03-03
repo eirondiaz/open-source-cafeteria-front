@@ -87,7 +87,7 @@ const CafeteriaScreen = () => {
           setEditData({})
           setIsEditing(false)
         }}
-        title={'PRUEBAAA'}
+        title={isEditing ? 'Editar' : 'Crear'}
       >
         <CafeteriaForm
           element={editData}

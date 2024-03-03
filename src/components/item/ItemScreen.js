@@ -4,10 +4,10 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import BasicIconButton from '../../shared/Basic/BasicIconButton'
 import BasicModal from '../../shared/Basic/BasicModal'
-import CampusForm from './CampusForm'
-import CampusTable from './CampusTable'
+import ItemForm from './ItemForm'
+import ItemTable from './ItemTable'
 
-const CampusScreen = () => {
+const ItemScreen = () => {
   const [open, setOpen] = useState(false)
   const [modalType, setModalType] = useState('add')
   const [editData, setEditData] = useState({})
@@ -16,17 +16,17 @@ const CampusScreen = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [isEditing, setIsEditing] = useState(false)
 
-  const selectedCampus = (mt, camp) => {
+  const selectedData = (mt, camp) => {
     setModalType(mt)
     setEditData(camp)
     setIsEditing(true)
   }
 
-  const getCampus = async () => {
+  const getData = async () => {
     try {
       setIsLoading(true)
       const res = await axios.get(
-        'https://cafeteria-op-src-api.onrender.com/api/campus'
+        'https://cafeteria-op-src-api.onrender.com/api/items'
       )
       setData(res.data)
     } catch (error) {
@@ -37,7 +37,7 @@ const CampusScreen = () => {
   }
 
   useEffect(() => {
-    getCampus()
+    getData()
   }, [refresh])
 
   return (
@@ -62,7 +62,7 @@ const CampusScreen = () => {
           mb: 4,
         }}
       >
-        <h2>Gestión de Campus</h2>
+        <h2>Gestión de Articulos</h2>
         <BasicIconButton
           onClick={() => {
             setModalType('add')
@@ -73,11 +73,11 @@ const CampusScreen = () => {
           <Add sx={{ color: 'white' }} />
         </BasicIconButton>
       </Box>
-      <CampusTable
+      <ItemTable
         data={data}
         isLoading={isLoading}
         setOpen={setOpen}
-        selectedCampus={selectedCampus}
+        selectedData={selectedData}
         setRefresh={setRefresh}
       />
       <BasicModal
@@ -89,7 +89,7 @@ const CampusScreen = () => {
         }}
         title={isEditing ? 'Editar' : 'Crear'}
       >
-        <CampusForm
+        <ItemForm
           element={editData}
           isEditing={isEditing}
           setOpen={setOpen}
@@ -101,4 +101,4 @@ const CampusScreen = () => {
   )
 }
 
-export default CampusScreen
+export default ItemScreen

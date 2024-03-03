@@ -6,22 +6,7 @@ import BasicButton from '../../shared/Basic/BasicButton'
 import BasicInput from '../../shared/Basic/BasicInput'
 import { Colors } from '../../styles/colors'
 
-const getObjectValue = (obj, format) => {
-  const properties = format.split('.')
-  let value = obj
-
-  for (const prop of properties) {
-    if (value && value.hasOwnProperty(prop)) {
-      value = value[prop]
-    } else {
-      return '' // Property not found, return an empty string or handle accordingly
-    }
-  }
-
-  return value
-}
-
-const CampusForm = ({
+const BrandForm = ({
   setOpen,
   setRefresh,
   element = {},
@@ -38,8 +23,6 @@ const CampusForm = ({
     Object.values(newElement)?.some((value) => !value) ||
     Object.values(newElement)?.some((value) => !value.toString().trim()) ||
     !Object.values(newElement)?.length
-
-  console.log(getObjectValue(newElement, format || 'name') ?? '')
 
   // Handle the input change
   const handleInputChange = (event) => {
@@ -59,7 +42,7 @@ const CampusForm = ({
   const create = async () => {
     try {
       await axios.post(
-        'https://cafeteria-op-src-api.onrender.com/api/campus',
+        'https://cafeteria-op-src-api.onrender.com/api/brands',
         newElement
       )
       setRefresh((prevVal) => !prevVal)
@@ -73,10 +56,9 @@ const CampusForm = ({
   }
 
   const update = async () => {
-    console.log(newElement)
     try {
       await axios.put(
-        `https://cafeteria-op-src-api.onrender.com/api/campus/${newElement.id}`,
+        `https://cafeteria-op-src-api.onrender.com/api/brands/${newElement.id}`,
         newElement
       )
       setRefresh((prevVal) => !prevVal)
@@ -115,4 +97,4 @@ const CampusForm = ({
   )
 }
 
-export default CampusForm
+export default BrandForm

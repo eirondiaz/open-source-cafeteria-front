@@ -7,21 +7,22 @@ import BasicInput from '../../shared/Basic/BasicInput'
 import BasicSelect from '../../shared/Basic/BasicSelect'
 import { Colors } from '../../styles/colors'
 
-const CafeteriaForm = ({
+const ItemForm = ({
   setOpen,
   setRefresh,
   element = {},
+  setIsEditing,
   //setElement,
   isEditing,
-  setIsEditing,
-  setEditData,
   //query,
   format,
 }) => {
   const [newElement, setNewElement] = useState(element)
   const [isLoading, setIsLoading] = useState(false)
-  const [campusList, setCampusList] = useState([])
-  const [isLoadingCampus, setIsLoadingCampus] = useState(false)
+  const [brandList, setBrandList] = useState([])
+  const [isLoadingBrands, setIsLoadingBrands] = useState(false)
+  const [supplierList, setSupplierList] = useState([])
+  const [isLoadingSuppliers, setIsLoadingSuppliers] = useState(false)
   // Handle the button disabled state based on the new element state
   const isButtonDisabled =
     Object.values(newElement)?.some((value) => !value) ||
@@ -43,24 +44,10 @@ const CafeteriaForm = ({
     isEditing ? update() : create()
   }
 
-  const getCampus = async () => {
-    setIsLoadingCampus(true)
-    try {
-      const res = await axios.get(
-        'https://cafeteria-op-src-api.onrender.com/api/campus'
-      )
-      setCampusList(res.data)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setIsLoadingCampus(false)
-    }
-  }
-
   const create = async () => {
     try {
       await axios.post(
-        'https://cafeteria-op-src-api.onrender.com/api/cafeterias',
+        'https://cafeteria-op-src-api.onrender.com/api/items',
         newElement
       )
       setRefresh((prevVal) => !prevVal)
@@ -76,10 +63,9 @@ const CafeteriaForm = ({
   const update = async () => {
     try {
       await axios.put(
-        `https://cafeteria-op-src-api.onrender.com/api/cafeterias/${newElement.id}`,
+        `https://cafeteria-op-src-api.onrender.com/api/items/${newElement.id}`,
         newElement
       )
-      setEditData({})
       setRefresh((prevVal) => !prevVal)
       setOpen(false)
     } catch (error) {
@@ -90,44 +76,99 @@ const CafeteriaForm = ({
     }
   }
 
+  const getBrands = async () => {
+    setIsLoadingBrands(true)
+    try {
+      const res = await axios.get(
+        'https://cafeteria-op-src-api.onrender.com/api/brands'
+      )
+      setBrandList(res.data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoadingBrands(false)
+    }
+  }
+
+  const getSuppliers = async () => {
+    setIsLoadingSuppliers(true)
+    try {
+      const res = await axios.get(
+        'https://cafeteria-op-src-api.onrender.com/api/suppliers'
+      )
+      setSupplierList(res.data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoadingSuppliers(false)
+    }
+  }
+
   useEffect(() => {
-    setNewElement(element)
-    getCampus()
+    getBrands()
+    getSuppliers()
   }, [])
 
   return (
     <Box>
       <BasicInput
-        label={'Descripción'}
+        label={'Description'}
         required
         name="description"
         //disabled={query === 'exchangeRate'}
-        defaultValue={newElement?.description || ''}
+        defaultValue={element?.description || ''}
         onChange={handleInputChange}
       />
       <BasicSelect
-        name="campusId"
-        label={'Campus'}
-        defaultValue={newElement?.campusId || ''}
+        name="brandId"
+        label={'Marcas'}
+        defaultValue={newElement?.brandId || ''}
         onChange={handleInputChange}
-        isLoading={isLoadingCampus}
+        isLoading={isLoadingBrands}
         // formRegister={{
         //   ...register('warehouseId', { required: true }),
         // }}
         //style={{ maxWidth: isClosed ? '100%' : '57%' }}
       >
-        {campusList?.map((campus) => (
-          <MenuItem key={campus.id} value={campus.id}>
-            {campus.description}
+        {brandList?.map((data) => (
+          <MenuItem key={data.id} value={data.id}>
+            {data.description}
+          </MenuItem>
+        ))}
+      </BasicSelect>
+      <BasicSelect
+        name="supplierId"
+        label={'Suplidor'}
+        defaultValue={newElement?.supplierId || ''}
+        onChange={handleInputChange}
+        isLoading={isLoadingSuppliers}
+        // formRegister={{
+        //   ...register('warehouseId', { required: true }),
+        // }}
+        //style={{ maxWidth: isClosed ? '100%' : '57%' }}
+      >
+        {supplierList?.map((data) => (
+          <MenuItem key={data.id} value={data.id}>
+            {data.comercialName}
           </MenuItem>
         ))}
       </BasicSelect>
       <BasicInput
-        label={'Encargado'}
+        label={'Costo'}
         required
-        name="encargado"
+        name="cost"
+        type="number"
         //disabled={query === 'exchangeRate'}
-        defaultValue={newElement?.encargado || ''}
+        defaultValue={element?.cost || ''}
+        onChange={handleInputChange}
+      />
+      <BasicInput
+        label={'Existencia'}
+        required
+        name="stock"
+        type="number"
+        //disabled={query === 'exchangeRate'}
+        defaultValue={element?.stock || ''}
         onChange={handleInputChange}
       />
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
@@ -146,4 +187,4 @@ const CafeteriaForm = ({
   )
 }
 
-export default CafeteriaForm
+export default ItemForm

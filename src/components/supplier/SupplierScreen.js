@@ -104,7 +104,7 @@ const SupplierScreen = () => {
           setEditData({})
           setIsEditing(false)
         }}
-        title={'PRUEBAAA'}
+        title={isEditing ? 'Editar' : 'Crear'}
       >
         <SupplierForm
           element={editData}

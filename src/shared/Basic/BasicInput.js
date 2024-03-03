@@ -33,7 +33,7 @@ const BasicInput = ({
           width: '100%',
           // pr: "0",
         }}
-        type={'text'}
+        type={type}
         //type={showPassword ? 'text' : type}
         // endAdornment={
         //   type === 'password' ? (

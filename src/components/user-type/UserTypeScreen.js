@@ -87,7 +87,7 @@ const UserTypeScreen = () => {
           setEditData({})
           setIsEditing(false)
         }}
-        title={'PRUEBAAA'}
+        title={isEditing ? 'Editar' : 'Crear'}
       >
         <UserTypeForm
           element={editData}

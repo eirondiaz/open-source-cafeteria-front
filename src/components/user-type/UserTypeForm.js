@@ -59,7 +59,7 @@ const UserTypeForm = ({
   const update = async () => {
     try {
       await axios.put(
-        `https://cafeteria-op-src-api.onrender.com/api/user-types/${element.id}`,
+        `https://cafeteria-op-src-api.onrender.com/api/user-types/${newElement.id}`,
         newElement
       )
       setEditData({})

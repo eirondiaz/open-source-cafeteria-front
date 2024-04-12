@@ -8,6 +8,8 @@ import CafeteriaScreen from '../components/cafeteria/CafeteriaScreen'
 import BrandScreen from '../components/brand/BrandScreen'
 import ItemScreen from '../components/item/ItemScreen'
 import EmployeeScreen from '../components/employee/EmployeeScreen'
+import SaleScreen from '../components/sale/SaleScreen'
+import UserScreen from '../components/user/UserScreen'
 
 const Layout = () => {
   const [selectedItem, setSelectedItem] = useState('cafeteria')
@@ -49,10 +51,14 @@ const Layout = () => {
             <SupplierScreen />
           ) : selectedItem == 'brand' ? (
             <BrandScreen />
+          ) : selectedItem == 'user' ? (
+            <UserScreen />
           ) : selectedItem == 'item' ? (
             <ItemScreen />
           ) : selectedItem == 'employee' ? (
             <EmployeeScreen />
+          ) : selectedItem == 'sale' ? (
+            <SaleScreen />
           ) : (
             <UserTypeScreen />
           )}
